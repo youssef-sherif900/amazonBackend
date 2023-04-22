@@ -6,6 +6,8 @@ import seedRouter from "./routes/seedRoutes.js";
 import productRouter from "./routes/ProductsRoutes.js";
 import userRouter from "./routes/userRoute.js";
 import orderRouter from "./routes/orderRoute.js";
+import cors from "cors";
+
 
 
 
@@ -15,7 +17,9 @@ mongoose.connect(process.env.MONGODB_URI)
 .catch(err=>console.log(err.message))
 
 const app = express()
-
+app.use(cors({
+    origin:"*"
+}))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
